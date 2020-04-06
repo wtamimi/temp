@@ -1,0 +1,140 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "2020-03-07T17:18:27Z",
+    "title" : "atp-file-attachment"
+  },
+  "host" : "rag0scnz17.execute-api.us-east-1.amazonaws.com",
+  "basePath" : "/test",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/{folder}" : {
+      "get" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Content-Type",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Accept",
+          "in" : "header",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "folder",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    },
+    "/{folder}/{item}" : {
+      "get" : {
+        "produces" : [ "application/json", "application/pdf", "application/docx" ],
+        "parameters" : [ {
+          "name" : "item",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "folder",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            },
+            "headers" : {
+              "Content-Type" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Content-Type",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "item",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "folder",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileName": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "item",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "folder",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200 response",
+            "schema" : {
+              "$ref" : "#/definitions/Empty"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Empty" : {
+      "type" : "object",
+      "title" : "Empty Schema"
+    }
+  }
+}
