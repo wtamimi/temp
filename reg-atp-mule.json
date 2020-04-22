@@ -6,12 +6,12 @@
     "title": "reg-atp-mule"
   },
   "host": "api-dev.syngenta.com",
-  "basePath": "/ecom/file-management",
+  "basePath": "/ecom/file-management/uploadfiles",
   "schemes": [
     "https"
   ],
   "paths": {
-    "/uploadfiles/v1.0": {
+    "/v1.0": {
       "post": {
         "consumes": [
           "multipart/form-data"
