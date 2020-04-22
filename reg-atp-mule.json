@@ -1,0 +1,56 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "reg-atp-mule",
+    "version": "2020-04-13T16:43:56Z",
+    "title": "reg-atp-mule"
+  },
+  "host": "api-dev.syngenta.com",
+  "basePath": "/ecom/file-management",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/uploadfiles/v1.0": {
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "file-name",
+            "in": "formData",
+            "description": "file to upload",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/apiResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "apiResponse": {
+      "type": "object",
+      "properties": {
+        "Status": {
+          "type": "string"
+        },
+        "Filename": {
+          "type": "string"
+        }
+      },
+      "title": "apiResponse"
+    }
+  }
+}
