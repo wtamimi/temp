@@ -5,7 +5,7 @@
     "version": "2020-04-13T16:43:56Z",
     "title": "reg-atp-s3"
   },
-  "host": "localhost:17000",
+  "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
   "basePath": "/dev",
   "schemes": [
     "https"
