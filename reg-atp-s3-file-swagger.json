@@ -1,0 +1,227 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "reg-atp-s3",
+    "version": "2020-06-08T20:31:44Z",
+    "title": "reg-atp-s3"
+  },
+  "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
+  "basePath": "/demo",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/atp": {
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/atp/file": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fileName",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fileUUID",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/fileDownloadResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "formData",
+            "required": true,
+            "type": "integer"
+        }, {
+          "name": "category",
+          "in": "formData",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "fileName",
+          "in": "formData",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "fileUUID",
+          "in": "formData",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "uploaderName",
+          "in": "formData",
+          "required": true,
+          "type": "string"
+        }, {
+          "name": "uploaderEmail",
+          "in": "formData",
+          "required": true,
+          "type": "string"
+        }, {
+            "name": "content",
+            "in": "formData",
+            "description": "file to upload",
+            "required": true,
+            "type": "file"
+        }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/fileUploadResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileUUID",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        }
+      },
+      "options": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Methods": {
+                "type": "string"
+              },
+              "Access-Control-Allow-Headers": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object",
+      "title": "Empty Schema"
+    },
+    "fileDownloadResponse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "title": "fileDownloadResponse"
+    },
+    "fileUploadResponse": {
+      "type": "object",
+      "properties": {
+        "fileUUID": {
+          "type": "string"
+        },
+        "filePath": {
+          "type": "string"
+        }
+      },
+      "title": "fileUploadResponse"
+    }
+  }
+}
