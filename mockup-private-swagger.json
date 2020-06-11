@@ -1,0 +1,52 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "atp-file-attachment",
+    "version": "2020-06-10T20:34:48Z",
+    "title": "atp-file-attachment"
+  },
+  "host": "localhost:17000",
+  "basePath": "/mockup",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/mockup": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "mockupId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/mockupresponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "mockupresponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Mockup Schema"
+    }
+  }
+}
