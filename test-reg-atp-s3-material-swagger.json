@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "reg-atp-s3",
-    "version": "2020-06-07T11:47:26Z",
+    "version": "2020-06-22T15:32:51Z",
     "title": "reg-atp-s3"
   },
   "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
@@ -11,35 +11,6 @@
     "https"
   ],
   "paths": {
-    "/atp/material": {
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            },
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      }
-    },
     "/atp/material/summary": {
       "get": {
         "produces": [
@@ -65,32 +36,11 @@
             "schema": {
               "$ref": "#/definitions/materialSummaryResponse"
             }
-          }
-        }
-      },
-      "options": {
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "200 response",
+          },
+          "400": {
+            "description": "400 response",
             "schema": {
-              "$ref": "#/definitions/Empty"
-            },
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Methods": {
-                "type": "string"
-              },
-              "Access-Control-Allow-Headers": {
-                "type": "string"
-              }
+              "$ref": "#/definitions/Error"
             }
           }
         }
@@ -98,10 +48,6 @@
     }
   },
   "definitions": {
-    "Empty": {
-      "type": "object",
-      "title": "Empty Schema"
-    },
     "materialSummaryResponse": {
       "type": "object",
       "properties": {
@@ -110,27 +56,27 @@
         },
         "dominantBreedingGroup": {
           "type": "string"
+        },
+        "GMOCMP_values": {
+          "type": "string"
+        },
+        "are_any_materials_GMO_or_Genome_Edited": {
+          "type": "string"
+        },
+        "materials_have_positive_gene": {
+          "type": "string"
         }
       },
-      "title": "atpFile"
+      "title": "materialSummaryResponse"
     },
-    "formData": {
+    "Error": {
       "type": "object",
       "properties": {
-        "folderName": {
-          "type": "string"
-        },
-        "fileName": {
-          "type": "string"
-        },
-        "uniqueId": {
-          "type": "string"
-        },
-        "content": {
+        "message": {
           "type": "string"
         }
       },
-      "title": "formData"
+      "title": "Error Schema"
     }
   }
 }
