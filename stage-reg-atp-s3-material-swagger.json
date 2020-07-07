@@ -1,0 +1,82 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "reg-atp-s3",
+    "version": "2020-06-22T15:32:51Z",
+    "title": "reg-atp-s3"
+  },
+  "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
+  "basePath": "/stage",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/atp/material/summary": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileUUID",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/materialSummaryResponse"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "materialSummaryResponse": {
+      "type": "object",
+      "properties": {
+        "numberOfMaterials": {
+          "type": "integer"
+        },
+        "dominantBreedingGroup": {
+          "type": "string"
+        },
+        "GMOCMP_values": {
+          "type": "string"
+        },
+        "are_any_materials_GMO_or_Genome_Edited": {
+          "type": "string"
+        },
+        "materials_have_positive_gene": {
+          "type": "string"
+        }
+      },
+      "title": "materialSummaryResponse"
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Error Schema"
+    }
+  }
+}
