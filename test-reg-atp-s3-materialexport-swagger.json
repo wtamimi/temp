@@ -1,0 +1,97 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "reg-atp-s3",
+    "version": "2020-08-18T10:22:54Z",
+    "title": "reg-atp-s3"
+  },
+  "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
+  "basePath": "/test",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+
+   
+    "/atp/material/export": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "isForApproval",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "materialStatus",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/materialExportResponse"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+    
+  },
+  "definitions": {
+    
+    
+    "materialExportResponse": {
+      "type": "object",
+      "properties": {
+        "approvedMaterialsCount": {
+          "type": "integer"
+        },
+        "conditionallyApprovedMaterialsCount": {
+          "type": "integer"
+        },
+        "restrictedMaterialsCount": {
+          "type": "integer"
+        },
+        "clearedMaterialsCount": {
+          "type": "integer"
+        }
+      },
+      "title": "materialExportResponse"
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Error Schema"
+    }
+    
+  }
+}
