@@ -29,12 +29,18 @@
             "required": true,
             "type": "string"
           },
-		  {
+	  {
             "name": "role",
             "in": "query",
             "required": false,
             "type": "string"
-          }
+          },
+	  {
+            "name": "crop",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
         ],
         "responses": {
           "400": {
