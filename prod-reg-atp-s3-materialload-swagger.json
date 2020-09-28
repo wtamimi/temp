@@ -1,0 +1,79 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "reg-atp-s3",
+    "version": "2020-08-18T10:22:54Z",
+    "title": "reg-atp-s3"
+  },
+  "host": "h8u9oj20il.execute-api.us-east-1.amazonaws.com",
+  "basePath": "/prod",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    
+    
+    "/atp/material/load": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "fileUUID",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "requestId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/MaterialLoadRsponse"
+            }
+          },
+          "400": {
+            "description": "400 response",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+   
+    "Error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Error Schema"
+    },
+    "MaterialLoadRsponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "MaterialLoadRsponse"
+    }
+  }
+}
