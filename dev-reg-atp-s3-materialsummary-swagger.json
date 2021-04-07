@@ -23,6 +23,12 @@
             "required": true,
             "type": "string"
           },
+	  {
+            "name": "action",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "requestId",
             "in": "query",
